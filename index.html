@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy New Year Mehwish 🎆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Styles -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .screen {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .screen::after {
+      content: "⬆ swipe";
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    /* Backgrounds */
+    .s1 { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
+    .s2 { background: linear-gradient(135deg, #667eea, #764ba2); }
+    .s3 { background: linear-gradient(135deg, #ff9966, #ff5e62); }
+    .s4 { background: linear-gradient(135deg, #11998e, #38ef7d); }
+    .s5 { background: linear-gradient(135deg, #fc5c7d, #6a82fb); }
+    .s6 { background: linear-gradient(135deg, #ff4d6d, #ff9a9e); }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.6rem;
+      margin-bottom: 15px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 320px;
+      animation: fadeUp 1.6s ease;
+    }
+
+    .name {
+      font-size: 2.8rem;
+      color: #ffe3ed;
+      font-weight: bold;
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 10px #ffffff;
+      }
+      50% {
+        text-shadow: 0 0 25px #ffb3c6;
+      }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      opacity: 0.8;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.6);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="screen s1">
+    <h1>Hey 👋</h1>
+    <p>Stop scrolling for a second...</p>
+  </section>
+
+  <section class="screen s2">
+    <h1>Because 💫</h1>
+    <p>This New Year message is specially for</p>
+  </section>
+
+  <section class="screen s3">
+    <h1 class="name">Mehwish 💖</h1>
+    <p>The girl who makes moments feel lighter ✨</p>
+  </section>
+
+  <section class="screen s4">
+    <h1>Happy New Year 🎆</h1>
+    <p>
+      May 2025 bring you smiles,<br>
+      success, peace 🌸<br>
+      and countless reasons to be happy
+    </p>
+  </section>
+
+  <section class="screen s5">
+    <h1>One Last Thing 💕</h1>
+    <p>
+      I hope this year brings you<br>
+      everything you deserve...<br><br>
+      and maybe a little more of <b>me</b> 😉
+    </p>
+  </section>
+
+  <section class="screen s6">
+    <h1>One Last Thing 💫</h1>
+    <p>
+      You still remain<br>
+      <b>my 11:11 wish</b> 😉😁
+    </p>
+  </section>
+
+  <!-- Script -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 350);
+  </script>
+
+</body>
+</html>
