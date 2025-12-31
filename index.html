@@ -88,6 +88,25 @@ p {
   50% { text-shadow: 0 0 25px #ffb3c6; }
 }
 
+.scroll-down-hint {
+  position: absolute;
+  bottom: 60px;
+  font-size: 1rem;
+  opacity: 0.8;
+  animation: bounceDown 1.8s infinite;
+  pointer-events: none;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
 
 .heart {
   position: absolute;
@@ -95,7 +114,6 @@ p {
   animation: float 5s linear infinite;
   opacity: 0.85;
 }
-
 
 .word {
   position: absolute;
@@ -124,6 +142,7 @@ p {
 <section class="screen s1">
   <h1>Hey 👋</h1>
   <p>Before you scroll, this is for you...</p>
+  <div class="scroll-down-hint">⬇ scroll down</div>
 </section>
 
 <section class="screen s2">
@@ -183,7 +202,6 @@ function createFallingItem() {
   item.style.animationDuration = (Math.random() * 2 + 4) + "s";
 
   document.body.appendChild(item);
-
   setTimeout(() => item.remove(), 6000);
 }
 
