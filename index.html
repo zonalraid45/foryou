@@ -37,14 +37,6 @@ body {
   overflow: hidden;
 }
 
-.screen::after {
-  content: "⬆ swipe";
-  position: absolute;
-  bottom: 20px;
-  font-size: 0.9rem;
-  opacity: 0.6;
-}
-
 .s1 { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
 .s2 { background: linear-gradient(135deg, #667eea, #764ba2); }
 .s3 { background: linear-gradient(135deg, #ff9966, #ff5e62); }
@@ -90,7 +82,7 @@ p {
 
 .scroll-down-hint {
   position: absolute;
-  bottom: 60px;
+  bottom: 20px;
   font-size: 1rem;
   opacity: 0.8;
   animation: bounceDown 1.8s infinite;
@@ -148,11 +140,13 @@ p {
 <section class="screen s2">
   <h1>Because 💫</h1>
   <p>This New Year message is specially for</p>
+  <div class="scroll-down-hint">⬇ scroll down</div>
 </section>
 
 <section class="screen s3">
   <h1 class="name">You 😊</h1>
   <p>The one who makes moments feel lighter ✨</p>
+  <div class="scroll-down-hint">⬇ scroll down</div>
 </section>
 
 <section class="screen s4">
@@ -162,6 +156,7 @@ p {
     success, peace 🌸<br>
     and countless reasons to be happy
   </p>
+  <div class="scroll-down-hint">⬇ scroll down</div>
 </section>
 
 <section class="screen s5">
@@ -171,6 +166,7 @@ p {
     everything you deserve...<br><br>
     and a lot of happiness 😊
   </p>
+  <div class="scroll-down-hint">⬇ scroll down</div>
 </section>
 
 <section class="screen s6">
@@ -179,6 +175,7 @@ p {
     May all your dreams<br>
     find their way to reality ✨
   </p>
+  <div class="scroll-down-hint">⬇ scroll down</div>
 </section>
 
 <script>
