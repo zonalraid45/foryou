@@ -66,17 +66,17 @@ p {
 .rainbow {
   background: linear-gradient(
     90deg,
-    red 0%,
-    orange 10%,
-    yellow 20%,
-    green 30%,
-    cyan 40%,
-    blue 50%,
-    indigo 60%,
-    violet 70%,
-    pink 80%,
-    purple 90%,
-    red 100%
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    indigo,
+    violet,
+    pink,
+    purple,
+    red
   );
   background-size: 2000%;
   -webkit-background-clip: text;
@@ -110,6 +110,12 @@ p {
 
 .s1 .scroll-down-hint {
   bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .s1 .scroll-down-hint {
+    bottom: 90px;
+  }
 }
 
 @keyframes bounceDown {
