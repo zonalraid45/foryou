@@ -59,9 +59,12 @@ p {
 
 .name {
   font-size: 2.8rem;
-  color: #ffe3ed;
   font-weight: bold;
-  animation: glow 2s ease-in-out infinite;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowText 8s linear infinite, glow 2s ease-in-out infinite;
 }
 
 @keyframes fadeUp {
@@ -78,6 +81,12 @@ p {
 @keyframes glow {
   0%,100% { text-shadow: 0 0 10px #fff; }
   50% { text-shadow: 0 0 25px #ffb3c6; }
+}
+
+@keyframes rainbowText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .scroll-down-hint {
