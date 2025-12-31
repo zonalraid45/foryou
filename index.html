@@ -2,224 +2,194 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy New Year Friend 🎆</title>
+<title>Scientific Calculator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+body{
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background:#0f172a;
+  font-family:Arial, sans-serif;
 }
 
-body {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  font-family: 'Poppins', sans-serif;
+.calculator{
+  width:360px;
+  background:#020617;
+  padding:20px;
+  border-radius:16px;
 }
 
-.screen {
-  height: 100vh;
-  width: 100%;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 30px;
-  color: white;
-  position: relative;
-  overflow: hidden;
+.mode-switch{
+  display:flex;
+  margin-bottom:10px;
 }
 
-.s1 { background: linear-gradient(135deg, #ff758c, #ff7eb3); }
-.s2 { background: linear-gradient(135deg, #667eea, #764ba2); }
-.s3 { background: #f111f1; }
-.s4 { background: linear-gradient(135deg, #11998e, #38ef7d); }
-.s5 { background: linear-gradient(135deg, #fc5c7d, #6a82fb); }
-.s6 { background: linear-gradient(135deg, #ff4d6d, #ff9a9e); }
-
-h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.6rem;
-  margin-bottom: 15px;
-  animation: fadeUp 1.2s ease;
+.mode-switch button{
+  flex:1;
+  padding:10px;
+  border:none;
+  background:#1e293b;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-p {
-  font-size: 1.2rem;
-  max-width: 300px;
-  animation: fadeUp 1.6s ease;
+.mode-switch .active{
+  background:#2563eb;
 }
 
-.name {
-  font-size: 2.8rem;
-  font-weight: bold;
-  animation: glow 2s ease-in-out infinite;
+#display{
+  width:100%;
+  height:60px;
+  font-size:22px;
+  text-align:right;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  margin-bottom:12px;
+  background:#0f172a;
+  color:white;
 }
 
-.rainbow {
-  background: linear-gradient(
-    90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    cyan,
-    blue,
-    indigo,
-    violet,
-    pink,
-    purple,
-    red
-  );
-  background-size: 2000%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: rainbowText 6s linear infinite;
+.buttons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(35px); }
-  to { opacity: 1; transform: translateY(0); }
+button{
+  height:55px;
+  font-size:15px;
+  border:none;
+  border-radius:10px;
+  background:#1e293b;
+  color:white;
+  cursor:pointer;
 }
 
-@keyframes glow {
-  0%,100% { text-shadow: 0 0 10px #fff; }
-  50% { text-shadow: 0 0 25px #ffb3c6; }
-}
-
-@keyframes rainbowText {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-.scroll-down-hint {
-  position: absolute;
-  bottom: 20px;
-  font-size: 1rem;
-  opacity: 0.8;
-  animation: bounceDown 1.8s infinite;
-  pointer-events: none;
-}
-
-.s1 .scroll-down-hint {
-  bottom: 40px;
-}
-
-@media (max-width: 768px) {
-  .s1 .scroll-down-hint {
-    bottom: 90px;
-  }
-}
-
-@keyframes bounceDown {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(8px); opacity: 1; }
-}
-
-.heart {
-  position: absolute;
-  font-size: 22px;
-  animation: float 5s linear infinite;
-  opacity: 0.85;
-}
-
-.word {
-  position: absolute;
-  font-size: 18px;
-  font-weight: 600;
-  animation: float 6s linear infinite;
-  opacity: 0.9;
-  white-space: nowrap;
-}
-
-@keyframes float {
-  0% { transform: translateY(100vh) scale(0.6); opacity: 1; }
-  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-}
+.operator{background:#2563eb;}
+.equal{grid-column:span 2;background:#22c55e;}
+.clear{background:#ef4444;}
+.advanced{display:none;}
 </style>
 </head>
 
 <body>
 
-<section class="screen s1">
-  <h1>Hey 👋</h1>
-  <p>Before you scroll, this is for you...</p>
-  <div class="scroll-down-hint">⬇ scroll down</div>
-</section>
+<div class="calculator">
 
-<section class="screen s2">
-  <h1>Because 💫</h1>
-  <p>This New Year message is specially for</p>
-  <div class="scroll-down-hint">⬇ scroll down</div>
-</section>
+  <div class="mode-switch">
+    <button id="basicBtn" class="active" onclick="setMode('basic')">Basic</button>
+    <button id="advBtn" onclick="setMode('advanced')">Advanced</button>
+  </div>
 
-<section class="screen s3">
-  <h1 class="name"><span class="rainbow">You</span> 😊</h1>
-  <p>The one who makes moments feel lighter ✨</p>
-  <div class="scroll-down-hint">⬇ scroll down</div>
-</section>
+  <input id="display" disabled>
 
-<section class="screen s4">
-  <h1>Happy New Year 🎆</h1>
-  <p>
-    May 2026 bring you smiles,<br>
-    success, peace 🌸<br>
-    and countless reasons to be happy
-  </p>
-  <div class="scroll-down-hint">⬇ scroll down</div>
-</section>
+  <div class="buttons">
+    <button class="clear" onclick="clearAll()">C</button>
+    <button onclick="append('÷')">÷</button>
+    <button onclick="append('×')">×</button>
+    <button onclick="back()">⌫</button>
 
-<section class="screen s5">
-  <h1>One Last Thing 😺</h1>
-  <p>
-    I hope this year brings you<br>
-    everything you deserve...<br><br>
-    and a lot of happiness 😊
-  </p>
-  <div class="scroll-down-hint">⬇ scroll down</div>
-</section>
+    <button onclick="append('7')">7</button>
+    <button onclick="append('8')">8</button>
+    <button onclick="append('9')">9</button>
+    <button class="operator" onclick="append('-')">−</button>
 
-<section class="screen s6">
-  <h1>Final Wish 💫</h1>
-  <p>
-    May all your dreams<br>
-    find their way to reality ✨
-  </p>
-  <div class="scroll-down-hint">⬇ scroll down</div>
-</section>
+    <button onclick="append('4')">4</button>
+    <button onclick="append('5')">5</button>
+    <button onclick="append('6')">6</button>
+    <button class="operator" onclick="append('+')">+</button>
+
+    <button onclick="append('1')">1</button>
+    <button onclick="append('2')">2</button>
+    <button onclick="append('3')">3</button>
+    <button onclick="append('.')">.</button>
+
+    <button onclick="append('0')">0</button>
+    <button class="equal" onclick="calculate()">=</button>
+
+    <!-- Advanced -->
+    <button class="advanced" onclick="append('√')">√</button>
+    <button class="advanced" onclick="append('²')">x²</button>
+    <button class="advanced" onclick="append('³')">x³</button>
+    <button class="advanced" onclick="append('sin')">sin</button>
+
+    <button class="advanced" onclick="append('cos')">cos</button>
+    <button class="advanced" onclick="append('tan')">tan</button>
+    <button class="advanced" onclick="append('log')">log</button>
+    <button class="advanced" onclick="append('π')">π</button>
+
+    <button class="advanced" onclick="append('θ')">θ</button>
+    <button class="advanced" onclick="toFraction()">a/b</button>
+  </div>
+</div>
 
 <script>
-function createFallingItem() {
-  const item = document.createElement("div");
+const display = document.getElementById("display");
+const thetaValue = 45; // θ is fixed to 45
 
-  const emojis = ["💖", "😸", "🎇", "😊", "✨"];
-  const words = ["Hope", "Joy", "Dream", "Smile", "Love", "Peace"];
-  const colors = ["#fff3b0", "#ffd6e0", "#cdb4ff", "#b8f2e6", "#ffcad4"];
-
-  if (Math.random() > 0.5) {
-    item.className = "heart";
-    item.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-  } else {
-    item.className = "word";
-    item.innerHTML = words[Math.floor(Math.random() * words.length)];
-    item.style.color = colors[Math.floor(Math.random() * colors.length)];
-  }
-
-  item.style.left = Math.random() * 100 + "vw";
-  item.style.animationDuration = (Math.random() * 2 + 4) + "s";
-
-  document.body.appendChild(item);
-  setTimeout(() => item.remove(), 6000);
+function append(v){
+  display.value += v;
 }
 
-setInterval(createFallingItem, 300);
+function clearAll(){
+  display.value = "";
+}
+
+function back(){
+  display.value = display.value.slice(0,-1);
+}
+
+function toFraction(){
+  let n = parseFloat(display.value);
+  if (isNaN(n)) return;
+  let d = 1;
+  while (Math.abs(n - Math.round(n)) > 1e-10){
+    n *= 10;
+    d *= 10;
+  }
+  display.value = `${Math.round(n)}/${d}`;
+}
+
+function calculate(){
+  try{
+    let exp = display.value;
+
+    exp = exp.replace(/π/g, Math.PI);
+    exp = exp.replace(/θ/g, thetaValue);
+
+    exp = exp.replace(/²/g, "**2");
+    exp = exp.replace(/³/g, "**3");
+
+    exp = exp.replace(/√(\d+|\([^)]*\))/g, "Math.sqrt($1)");
+
+    // trig ALWAYS treated as degrees
+    exp = exp.replace(/sin(\d+|\([^)]*\))/g, "Math.sin(($1)*Math.PI/180)");
+    exp = exp.replace(/cos(\d+|\([^)]*\))/g, "Math.cos(($1)*Math.PI/180)");
+    exp = exp.replace(/tan(\d+|\([^)]*\))/g, "Math.tan(($1)*Math.PI/180)");
+
+    exp = exp.replace(/log/g, "Math.log10");
+    exp = exp.replace(/÷/g,"/").replace(/×/g,"*");
+
+    let result = eval(exp);
+    display.value = Number.isFinite(result) ? result : "Error";
+  }catch{
+    display.value = "Error";
+  }
+}
+
+function setMode(mode){
+  document.querySelectorAll(".advanced")
+    .forEach(b => b.style.display = mode === "advanced" ? "block" : "none");
+
+  document.getElementById("basicBtn").classList.toggle("active", mode==="basic");
+  document.getElementById("advBtn").classList.toggle("active", mode==="advanced");
+}
 </script>
 
 </body>
