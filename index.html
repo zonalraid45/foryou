@@ -88,11 +88,22 @@ p {
   50% { text-shadow: 0 0 25px #ffb3c6; }
 }
 
+
 .heart {
   position: absolute;
   font-size: 22px;
   animation: float 5s linear infinite;
   opacity: 0.85;
+}
+
+
+.word {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 600;
+  animation: float 6s linear infinite;
+  opacity: 0.9;
+  white-space: nowrap;
 }
 
 @keyframes float {
@@ -112,7 +123,7 @@ p {
 
 <section class="screen s1">
   <h1>Hey 👋</h1>
-  <p>Stop scrolling for a second...</p>
+  <p>Before you scroll, this is for you...</p>
 </section>
 
 <section class="screen s2">
@@ -152,22 +163,31 @@ p {
 </section>
 
 <script>
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
+function createFallingItem() {
+  const item = document.createElement("div");
 
-  const emojis = ["💖", "😸", "🎇", "😊"];
-  heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+  const emojis = ["💖", "😸", "🎇", "😊", "✨"];
+  const words = ["Hope", "Joy", "Dream", "Smile", "Love", "Peace"];
+  const colors = ["#fff3b0", "#ffd6e0", "#cdb4ff", "#b8f2e6", "#ffcad4"];
 
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+  if (Math.random() > 0.5) {
+    item.className = "heart";
+    item.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+  } else {
+    item.className = "word";
+    item.innerHTML = words[Math.floor(Math.random() * words.length)];
+    item.style.color = colors[Math.floor(Math.random() * colors.length)];
+  }
 
-  document.body.appendChild(heart);
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.animationDuration = (Math.random() * 2 + 4) + "s";
 
-  setTimeout(() => heart.remove(), 5000);
+  document.body.appendChild(item);
+
+  setTimeout(() => item.remove(), 6000);
 }
 
-setInterval(createHeart, 350);
+setInterval(createFallingItem, 300);
 </script>
 
 </body>
