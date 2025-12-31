@@ -66,21 +66,22 @@ p {
 .rainbow {
   background: linear-gradient(
     90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    cyan,
-    blue,
-    indigo,
-    violet,
-    pink,
-    purple
+    red 0%,
+    orange 10%,
+    yellow 20%,
+    green 30%,
+    cyan 40%,
+    blue 50%,
+    indigo 60%,
+    violet 70%,
+    pink 80%,
+    purple 90%,
+    red 100%
   );
-  background-size: 1200%;
+  background-size: 2000%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: rainbowText 8s linear infinite;
+  animation: rainbowText 6s linear infinite;
 }
 
 @keyframes fadeUp {
@@ -95,8 +96,7 @@ p {
 
 @keyframes rainbowText {
   0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
 .scroll-down-hint {
@@ -106,6 +106,10 @@ p {
   opacity: 0.8;
   animation: bounceDown 1.8s infinite;
   pointer-events: none;
+}
+
+.s1 .scroll-down-hint {
+  bottom: 40px;
 }
 
 @keyframes bounceDown {
